@@ -99,9 +99,9 @@ def main():
                             st.write(f"**{zone_en}**: {lower:.2f} - {upper:.2f}")
         
         except ValueError as e:
-            st.error(f"Error: {e}")
+            st.error(f"오류: {e}")
         except Exception as e:
-            st.error(f"An unexpected error occurred: {e}")
+            st.error(f"데이터를 불러오는 중 오류가 발생했습니다: {e}")
 
 if __name__ == "__main__":
     main()

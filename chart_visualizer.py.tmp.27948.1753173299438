@@ -45,8 +45,8 @@ class ChartVisualizer:
         dates = data.index
         prices = data['Close']
         
-        ax.plot(dates, prices, color='black', linewidth=1.5, label=f'{ticker} Price')
-        ax.plot(dates, ma_200w, color='white', linewidth=2, label='200W Moving Average')
+        ax.plot(dates, prices, color='black', linewidth=1.5, label=f'{ticker} 주가')
+        ax.plot(dates, ma_200w, color='white', linewidth=2, label='200주 이동평균선')
         
         self._add_zone_backgrounds(ax, dates, zones)
         
@@ -84,7 +84,7 @@ class ChartVisualizer:
                 edgecolor='none',
                 facecolor=color,
                 alpha=0.2,
-                label=f'{self._get_zone_english(zone_name)} Zone'
+                label=f'{self._get_zone_korean(zone_name)} 구간'
             )
             ax.add_patch(rect)
     
@@ -95,16 +95,6 @@ class ChartVisualizer:
             'fair_value': '적정가치',
             'expensive': '비싼편',
             'very_expensive': '매우 비쌈'
-        }
-        return zone_names.get(zone_name, zone_name)
-    
-    def _get_zone_english(self, zone_name):
-        zone_names = {
-            'very_cheap': 'Very Cheap',
-            'cheap': 'Cheap',
-            'fair_value': 'Fair Value',
-            'expensive': 'Expensive',
-            'very_expensive': 'Very Expensive'
         }
         return zone_names.get(zone_name, zone_name)
     

@@ -92,16 +92,16 @@ def main():
                 
                 with st.expander("Price Ranges by Zone"):
                     for zone_name, (lower, upper) in zones.items():
-                        zone_en = visualizer._get_zone_english(zone_name)
+                        zone_kr = visualizer._get_zone_korean(zone_name)
                         if upper == float('inf'):
-                            st.write(f"**{zone_en}**: {lower:.2f} and above")
+                            st.write(f"**{zone_kr}**: {lower:.2f} 이상")
                         else:
-                            st.write(f"**{zone_en}**: {lower:.2f} - {upper:.2f}")
+                            st.write(f"**{zone_kr}**: {lower:.2f} - {upper:.2f}")
         
         except ValueError as e:
-            st.error(f"Error: {e}")
+            st.error(f"오류: {e}")
         except Exception as e:
-            st.error(f"An unexpected error occurred: {e}")
+            st.error(f"데이터를 불러오는 중 오류가 발생했습니다: {e}")
 
 if __name__ == "__main__":
     main()

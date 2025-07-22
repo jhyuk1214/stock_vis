@@ -98,16 +98,6 @@ class ChartVisualizer:
         }
         return zone_names.get(zone_name, zone_name)
     
-    def _get_zone_english(self, zone_name):
-        zone_names = {
-            'very_cheap': 'Very Cheap',
-            'cheap': 'Cheap',
-            'fair_value': 'Fair Value',
-            'expensive': 'Expensive',
-            'very_expensive': 'Very Expensive'
-        }
-        return zone_names.get(zone_name, zone_name)
-    
     def create_interactive_chart(self, data, ma_200w, zones, current_zone, ticker):
         fig = go.Figure()
         
