@@ -6,17 +6,17 @@ import pandas as pd
 
 st.set_page_config(page_title="주식 시각화 앱", page_icon="📈", layout="wide")
 
-# CSS로 통일된 폰트 설정 (Windows용)
+# CSS로 통일된 폰트 설정 (크로스 플랫폼)
 st.markdown("""
 <style>
     html, body, [class*="css"] {
-        font-family: 'Malgun Gothic', sans-serif !important;
+        font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans CJK KR', sans-serif !important;
     }
     .stMetric-value {
-        font-family: 'Malgun Gothic', sans-serif !important;
+        font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans CJK KR', sans-serif !important;
     }
     .stMarkdown {
-        font-family: 'Malgun Gothic', sans-serif !important;
+        font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans CJK KR', sans-serif !important;
     }
 </style>
 """, unsafe_allow_html=True)

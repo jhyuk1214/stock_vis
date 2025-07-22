@@ -4,8 +4,14 @@ import numpy as np
 from datetime import datetime
 import matplotlib.font_manager as fm
 
-# 한글 폰트 설정 (Windows용)
-plt.rcParams['font.family'] = ['Malgun Gothic', 'sans-serif']
+# 한글 폰트 설정 (크로스 플랫폼)
+import platform
+if platform.system() == 'Windows':
+    plt.rcParams['font.family'] = ['Malgun Gothic', 'sans-serif']
+else:
+    # Linux/Mac용 (Streamlit Cloud) - NanumGothic 설치됨
+    plt.rcParams['font.family'] = ['NanumGothic', 'DejaVu Sans', 'sans-serif']
+    
 plt.rcParams['axes.unicode_minus'] = False
 
 class ChartVisualizer:
