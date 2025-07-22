@@ -3,8 +3,6 @@ import matplotlib.patches as patches
 import numpy as np
 from datetime import datetime
 import matplotlib.font_manager as fm
-import plotly.graph_objects as go
-import plotly.express as px
 
 # 한글 폰트 설정 (Windows용)
 plt.rcParams['font.family'] = ['Malgun Gothic', 'sans-serif']
