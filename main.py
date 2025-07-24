@@ -37,6 +37,7 @@ def main():
         "NFLX - Netflix Inc.",
         "BTC-USD - Bitcoin USD",
         "ETH-USD - Ethereum USD",
+        "GLD - SPDR Gold Trust",
         "SPY - SPDR S&P 500 ETF",
         "QQQ - Invesco QQQ Trust"
     ]
