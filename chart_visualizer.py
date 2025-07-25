@@ -45,10 +45,10 @@ class ChartVisualizer:
         dates = data.index
         prices = data['Close']
         
-        ax.plot(dates, prices, color='black', linewidth=1.5, label=f'{ticker} Price')
-        ax.plot(dates, ma_200w, color='white', linewidth=2, label='200W Moving Average')
+        price_line = ax.plot(dates, prices, color='black', linewidth=1.5, label=f'{ticker} Price')[0]
+        ma_line = ax.plot(dates, ma_200w, color='white', linewidth=2, label='200W Moving Average')[0]
         
-        self._add_zone_backgrounds(ax, dates, zones)
+        zone_patches = self._add_zone_backgrounds(ax, dates, zones)
         
         ax.set_yscale('log')
         ax.set_title(f'{ticker} Stock Analysis Chart (Current Zone: {self._get_zone_english(current_zone)})', 
@@ -56,7 +56,10 @@ class ChartVisualizer:
         ax.set_xlabel('Date', fontsize=12)
         ax.set_ylabel('Price (Log Scale)', fontsize=12)
         
-        ax.legend(loc='upper left')
+        # Create legend with explicit order
+        handles = [price_line, ma_line] + zone_patches
+        labels = [f'{ticker} Price', '200W Moving Average'] + [f'{self._get_zone_english(zone_name)} Zone' for zone_name in ['very_expensive', 'expensive', 'fair_value', 'cheap', 'very_cheap']]
+        ax.legend(handles, labels, loc='upper left')
         ax.grid(True, alpha=0.3)
         
         plt.xticks(rotation=45)
@@ -68,6 +71,7 @@ class ChartVisualizer:
         x_min, x_max = ax.get_xlim() if ax.get_xlim() != (0, 1) else (0, len(dates))
         
         zone_order = ['very_expensive', 'expensive', 'fair_value', 'cheap', 'very_cheap']
+        zone_patches = []
         
         for zone_name in zone_order:
             lower, upper = zones[zone_name]
@@ -83,10 +87,12 @@ class ChartVisualizer:
                 linewidth=0,
                 edgecolor='none',
                 facecolor=color,
-                alpha=0.2,
-                label=f'{self._get_zone_english(zone_name)} Zone'
+                alpha=0.2
             )
             ax.add_patch(rect)
+            zone_patches.append(rect)
+        
+        return zone_patches
     
     def _get_zone_korean(self, zone_name):
         zone_names = {
