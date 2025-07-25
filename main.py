@@ -92,7 +92,9 @@ def main():
                     st.metric("Current Value Zone", zone_english)
                 
                 with st.expander("Price Ranges by Zone"):
-                    for zone_name, (lower, upper) in zones.items():
+                    zone_order = ['very_expensive', 'expensive', 'fair_value', 'cheap', 'very_cheap']
+                    for zone_name in zone_order:
+                        lower, upper = zones[zone_name]
                         zone_en = visualizer._get_zone_english(zone_name)
                         if upper == float('inf'):
                             st.write(f"**{zone_en}**: {lower:.2f} and above")

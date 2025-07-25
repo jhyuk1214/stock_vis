@@ -67,7 +67,7 @@ class ChartVisualizer:
     def _add_zone_backgrounds(self, ax, dates, zones):
         x_min, x_max = ax.get_xlim() if ax.get_xlim() != (0, 1) else (0, len(dates))
         
-        zone_order = ['very_cheap', 'cheap', 'fair_value', 'expensive', 'very_expensive']
+        zone_order = ['very_expensive', 'expensive', 'fair_value', 'cheap', 'very_cheap']
         
         for zone_name in zone_order:
             lower, upper = zones[zone_name]
@@ -158,7 +158,7 @@ class ChartVisualizer:
         return fig
     
     def _add_plotly_zone_backgrounds(self, fig, dates, zones):
-        zone_order = ['very_cheap', 'cheap', 'fair_value', 'expensive', 'very_expensive']
+        zone_order = ['very_expensive', 'expensive', 'fair_value', 'cheap', 'very_cheap']
         
         # 색상을 더 진하게 변경
         plotly_colors = {
